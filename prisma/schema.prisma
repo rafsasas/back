@@ -1,0 +1,41 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = [ "native", "windows"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model instituicao_brasileira {
+  id    String         @id @default(uuid())
+  nome  String
+  sigla String
+  pais  String
+  cnpj String
+  cep   String
+  logradouro String
+  bairro      String
+  estado      String
+  municipio   String
+  numero      Int
+  complemento String?
+  situacao   String @default("ATIVADO")
+}
+
+model instuicao_estrangeira {
+  id    String         @id @default(uuid())
+  nome  String
+  sigla String
+  pais  String
+  cep   String?
+  logradouro String
+  estado      String
+  municipio   String
+  complemento String?
+  situacao   String @default("ATIVADO")
+}
